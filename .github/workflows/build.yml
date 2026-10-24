@@ -1,0 +1,51 @@
+name: Build VanSwift APK
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: '8.9'
+
+      - name: Build debug APK
+        run: gradle :app:assembleDebug --no-daemon --stacktrace
+
+      - name: Build release APK (unsigned)
+        run: gradle :app:assembleRelease --no-daemon --stacktrace
+        continue-on-error: true
+
+      - name: Upload debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: vanswift-debug-apk
+          path: app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
+
+      - name: Upload release APK
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: vanswift-release-apk-unsigned
+          path: app/build/outputs/apk/release/*.apk
+          if-no-files-found: ignore

@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">VanSwift</string>
+    <string name="nav_dashboard">Dashboard</string>
+    <string name="nav_apps">Aplikasi</string>
+    <string name="nav_cloud">Cloud Sync</string>
+    <string name="nav_schedules">Jadwal</string>
+    <string name="nav_settings">Pengaturan</string>
+
+    <string name="status_all_features_unlocked">Semua Fitur Premium Terbuka (Gratis &amp; Permanen)</string>
+    <string name="btn_backup">Cadangkan</string>
+    <string name="btn_restore">Pulihkan</string>
+    <string name="label_protected">Terproteksi</string>
+    <string name="label_multiple_versions">Riwayat Versi Ganda</string>
+</resources>

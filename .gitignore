@@ -1,0 +1,25 @@
+# Gradle
+.gradle/
+build/
+*/build/
+gradle-8.9/
+gradle-8.9-bin.zip
+
+# Android
+local.properties
+*.apk
+*.aab
+*.keystore
+*.jks
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Kotlin
+.kotlin/
